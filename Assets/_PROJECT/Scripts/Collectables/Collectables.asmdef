@@ -1,0 +1,16 @@
+{
+    "name": "Coins",
+    "rootNamespace": "",
+    "references": [
+        "GUID:95b1837254347bb439f46a3db5e02013"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
