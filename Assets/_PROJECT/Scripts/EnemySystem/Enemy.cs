@@ -1,19 +1,22 @@
 using UnityEngine;
 using UnityEngine.AI;
+using StarterAssets;
 
 namespace Woodland.EnemySystem
 {
     [RequireComponent(typeof(NavMeshAgent))]
     public class Enemy : MonoBehaviour
     {
-        [SerializeField] private float movementSpeed = 5f;
-        [SerializeField] private Transform target;
-
+        private Transform target;
         private NavMeshAgent agent;
         
         private void Awake()
         {
             agent = GetComponent<NavMeshAgent>();
+        }
+        private void Start()
+        {
+            target = FindObjectOfType<ThirdPersonController>().transform;
         }
         private void Update()
         {
@@ -24,6 +27,10 @@ namespace Woodland.EnemySystem
         private void ChaseTarget(Vector3 targetPosition)
         {
             agent.SetDestination(targetPosition);
+        }
+        public void SetMovementSpeed(float speed)
+        {
+            agent.speed = speed;
         }
     }
 }
