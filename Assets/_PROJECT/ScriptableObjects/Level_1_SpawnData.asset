@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 1282176817323135862, guid: 4abbc20998d0af846ac940ad8ef32076, type: 3}
   enemyCount: 5
-  enemySpeed: 5
+  enemySpeed: 3
   spawnPoints:
   - {x: -23.05, y: 2, z: -23.14}
   - {x: -23.05, y: 2, z: -2.86}

@@ -20,29 +20,29 @@ namespace Woodland.DoorSystem
         {
             startXScale = doorLeft.localScale.x;
 
-            startLeftValue = doorLeft.transform.position.x - doorLeft.localScale.x;
-            startRightValue = doorRight.transform.position.x + doorRight.localScale.x;
+            startLeftValue = doorLeft.transform.localPosition.x - doorLeft.localScale.x;
+            startRightValue = doorRight.transform.localPosition.x + doorRight.localScale.x;
 
-            startLeftPos = doorLeft.transform.position;
-            startRightPos = doorRight.transform.position;
+            startLeftPos = doorLeft.transform.localPosition;
+            startRightPos = doorRight.transform.localPosition;
         }
 
         public void OpenDoor()
         {
             doorLeft.DOScaleX(0f, doorAnimationTime);
-            doorLeft.DOMoveX(startLeftValue, doorAnimationTime);
+            doorLeft.DOLocalMoveX(startLeftValue, doorAnimationTime);
 
             doorRight.DOScaleX(0f, doorAnimationTime);
-            doorRight.DOMoveX(startRightValue, doorAnimationTime);
+            doorRight.DOLocalMoveX(startRightValue, doorAnimationTime);
         }
 
         public void CloseDoor()
         {
             doorLeft.DOScaleX(startXScale, doorAnimationTime);
-            doorLeft.DOMove(startLeftPos, doorAnimationTime);
+            doorLeft.DOLocalMove(startLeftPos, doorAnimationTime);
 
             doorRight.DOScaleX(startXScale, doorAnimationTime);
-            doorRight.DOMove(startRightPos, doorAnimationTime);
+            doorRight.DOLocalMove(startRightPos, doorAnimationTime);
         }
     }
 }
