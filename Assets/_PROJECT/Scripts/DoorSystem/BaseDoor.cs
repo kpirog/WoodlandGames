@@ -4,7 +4,7 @@ namespace Woodland.DoorSystem
 {
     public abstract class BaseDoor : MonoBehaviour
     {
-        private DoorAnimation doorAnimation;
+        protected DoorAnimation doorAnimation;
 
         protected virtual void Awake()
         {

@@ -6,15 +6,12 @@ namespace Woodland.DoorSystem
     {
         protected override void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Player") || other.CompareTag("Enemy"))
-            {
-
-            }
+            doorAnimation.OpenDoor();
         }
 
         protected override void OnTriggerExit(Collider other)
         {
-            
+            doorAnimation.CloseDoor();
         }
     }
 }
