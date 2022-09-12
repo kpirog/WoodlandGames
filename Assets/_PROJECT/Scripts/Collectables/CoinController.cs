@@ -43,7 +43,7 @@ namespace Woodland.Collectables
 
             if (coinsCollected == coins.Length)
             {
-                gameController.LoadNextLevel();
+                gameController.FinishLevel();
             }
         }
     }

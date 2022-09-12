@@ -1,4 +1,5 @@
 using UnityEngine;
+using Woodland.Core;
 using Woodland.UI;
 
 namespace Woodland.HealthSystem
@@ -7,6 +8,13 @@ namespace Woodland.HealthSystem
     {
         [SerializeField] private int lives = 3;
         [SerializeField] private HealthView healthView;
+
+        private GameController gameController;
+
+        private void Awake()
+        {
+            gameController = FindObjectOfType<GameController>();
+        }
 
         private void Start()
         {
@@ -28,8 +36,11 @@ namespace Woodland.HealthSystem
 
             if (lives <= 0)
             {
-                //gameover
+                gameController.OnGameFinished(false);
+                return;
             }
+
+            gameController.OnLostHealth();
         }
     }
 }
