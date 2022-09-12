@@ -1,0 +1,18 @@
+{
+    "name": "StarterAssets",
+    "rootNamespace": "",
+    "references": [
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:d0ac0bf27259e024391472e34aa9e4fe",
+        "GUID:5347d09fba6efdc42a3b463e3892ce26"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

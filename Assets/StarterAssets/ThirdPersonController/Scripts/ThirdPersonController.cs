@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
+using Woodland.Core;
 #endif
 
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
@@ -98,6 +99,9 @@ namespace StarterAssets
         private int _animIDFreeFall;
         private int _animIDMotionSpeed;
 
+        private Vector3 _startPosition;
+        private Quaternion _startRotation;
+
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
         private PlayerInput _playerInput;
 #endif
@@ -105,6 +109,7 @@ namespace StarterAssets
         private CharacterController _controller;
         private StarterAssetsInputs _input;
         private GameObject _mainCamera;
+        private GameController _gameController;
 
         private const float _threshold = 0.01f;
 
@@ -130,6 +135,20 @@ namespace StarterAssets
             {
                 _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
             }
+
+            _gameController = FindObjectOfType<GameController>();
+        }
+
+        private void OnEnable()
+        {
+            _gameController.onLostHealth += ResetPositionAndRotation;
+            _gameController.onGameFinished += DisableComponent;
+        }
+
+        private void OnDisable()
+        {
+            _gameController.onLostHealth -= ResetPositionAndRotation;
+            _gameController.onGameFinished -= DisableComponent;
         }
 
         private void Start()
@@ -141,6 +160,7 @@ namespace StarterAssets
             _input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
             _playerInput = GetComponent<PlayerInput>();
+            
 #else
 			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
 #endif
@@ -150,6 +170,8 @@ namespace StarterAssets
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
+            _startPosition = transform.position;
+            _startRotation = transform.rotation;
         }
 
         private void Update()
@@ -164,6 +186,17 @@ namespace StarterAssets
         private void LateUpdate()
         {
             CameraRotation();
+        }
+
+        private void ResetPositionAndRotation()
+        {
+            transform.position = _startPosition;
+            transform.rotation = _startRotation;
+        }
+
+        private void DisableComponent(bool state)
+        {
+            gameObject.SetActive(false);
         }
 
         private void AssignAnimationIDs()

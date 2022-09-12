@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7405730621648386426}
   - component: {fileID: 4841092177458126867}
-  m_Layer: 0
+  - component: {fileID: 1196832189415621926}
+  m_Layer: 8
   m_Name: SafePlace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,6 +44,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 362a0048e73e4f14991db237724f1476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shape: 4
+  _shape: 2
   _color: {r: 1, g: 1, b: 0, a: 1}
-  _radius: 4.9
+  _radius: 5
+--- !u!208 &1196832189415621926
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7102041862453583140}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 2.5, y: 2.5, z: 2.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
