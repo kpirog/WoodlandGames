@@ -2,7 +2,8 @@
     "name": "Coins",
     "rootNamespace": "",
     "references": [
-        "GUID:95b1837254347bb439f46a3db5e02013"
+        "GUID:95b1837254347bb439f46a3db5e02013",
+        "GUID:5347d09fba6efdc42a3b463e3892ce26"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

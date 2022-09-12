@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using Woodland.Core;
 using Woodland.UI;
 
 namespace Woodland.Collectables
@@ -9,18 +10,20 @@ namespace Woodland.Collectables
         [SerializeField] private CoinView coinView;
 
         private Coin[] coins;
-        private int coinsCollectedAmount = 0;
+        private int coinsCollected = 0;
+        private GameController gameController;
 
         [HideInInspector] public UnityEvent onCoinCollected;
 
         private void Awake()
         {
             coins = FindObjectsOfType<Coin>();
+            gameController = FindObjectOfType<GameController>();
         }
 
         private void Start()
         {
-            coinView.SetViewData(coinsCollectedAmount, coins.Length);
+            coinView.SetViewData(coinsCollected, coins.Length);
         }
 
         private void OnEnable()
@@ -35,8 +38,13 @@ namespace Woodland.Collectables
 
         private void UpdateCollected()
         {
-            coinsCollectedAmount++;
-            coinView.SetViewData(coinsCollectedAmount, coins.Length);
+            coinsCollected++;
+            coinView.SetViewData(coinsCollected, coins.Length);
+
+            if (coinsCollected == coins.Length)
+            {
+                gameController.LoadNextLevel();
+            }
         }
     }
 }

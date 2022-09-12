@@ -1,4 +1,5 @@
 using UnityEngine;
+using Woodland.Core;
 
 namespace Woodland.EnemySystem
 {
@@ -6,7 +7,12 @@ namespace Woodland.EnemySystem
     {
         [SerializeField] private EnemySpawnData[] enemySpawnData;
 
-        private int levelIndex = 0;
+        private GameController gameController;
+
+        private void Awake()
+        {
+            gameController = FindObjectOfType<GameController>();
+        }
 
         private void Start()
         {
@@ -15,7 +21,7 @@ namespace Woodland.EnemySystem
 
         private void SpawnEnemies()
         {
-            EnemySpawnData currentSpawnData = enemySpawnData[levelIndex];
+            EnemySpawnData currentSpawnData = enemySpawnData[gameController.LevelIndex];
             
             for (int i = 0; i < currentSpawnData.EnemyCount; i++)
             {
